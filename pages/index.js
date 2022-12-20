@@ -20,12 +20,12 @@ setTimeout(()=>{
 return
 
     }
-    console.log("tu juz sie nie wykona")
+
     const formData = {};
     formData['name']=name
     formData['email']=email
     formData['message']=message
-    console.log(formData)
+    
    
 
   
