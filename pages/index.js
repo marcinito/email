@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  
 
   async function handleOnSubmit(e) {
     e.preventDefault();
@@ -17,7 +19,7 @@ export default function Home() {
     await fetch('/api/mail', {
       method: 'POST',
       body: JSON.stringify(formData)
-    });
+    }).then(res=>console.log(res));
   }
   return (
    <div className={styles.grid}>
@@ -46,7 +48,7 @@ export default function Home() {
       border-radius: .2em;
     }
   `}</style>
-  <form method="post">
+  <form method="post" onSubmit={handleOnSubmit}>
     <p>
       <label htmlFor="name">Name</label>
       <input id="name" type="text" name="name" />
@@ -60,7 +62,7 @@ export default function Home() {
       <textarea id="message" name="message" />
     </p>
     <p>
-      <button onSubmit={handleOnSubmit}>Submit</button>
+      <input type="submit"/>
     </p>
   </form>
 </div>

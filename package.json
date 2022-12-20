@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "next": "13.0.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sparkpost": "^2.1.4"
   },
   "devDependencies": {
     "eslint": "8.29.0",
