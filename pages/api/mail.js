@@ -3,7 +3,8 @@ const mail = require("@sendgrid/mail")
 mail.setApiKey("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")//It is setting our key
 
 export default async function handler(req, res) {
-  const body=await JSON.parse(req.body)
+  try{
+  const body=JSON.parse(req.body)
 
   const message=`
  Name:${body.name}\r\n
@@ -19,7 +20,12 @@ export default async function handler(req, res) {
     html:message.replace(/\r\n/g,`<br>`)
   }
  
-  let dwa=mail.send(data)
-  console.log(dwa)
-  res.status(200).json({ name: 'John Doe' })
+  await mail.send(data)
+
+
+}
+catch(error){
+  return res.status(error.statusCode || 500).json({ error: error.message });
+}
+res.status(200).json({ name: 'John Doe' })
 }
